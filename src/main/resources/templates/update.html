@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>更新</title>
+</head>
+<body>
+    <form action="/update" method="post">
+        <input name="id" value="${user.id!}" hidden="hidden"/>
+        <table>
+            <tr>
+                <td>用户名</td>
+                <td><input name="name" value="${user.name!}"/></td>
+            </tr>
+            <tr>
+                <td>真实姓名</td>
+                <td><input name="realName" value="${user.realName!}"/></td>
+            </tr>
+            <tr>
+                <td>年龄</td>
+                <td><input name="age" value="${user.age!}"/></td>
+            </tr>
+        </table>
+        <input type="submit" value="保存"/> &nbsp;&nbsp;&nbsp;<input type="reset" value="重置"/>
+    </form>
+</body>
+</html>

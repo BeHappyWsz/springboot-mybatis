@@ -20,9 +20,13 @@ public interface UserDao {
 
     User findById(@Param("id") Long id);
 
-    Long saveUser(User user);
+    List<User> searchByName(@Param("name") String name);
+
+    Long insertUser(User user);
 
     Long updateUser(User user);
 
-    Long deleteUser(User user);
+    Long deleteUser(Long id);
+
+
 }

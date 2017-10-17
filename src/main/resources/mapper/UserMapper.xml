@@ -14,10 +14,46 @@
         id, name, real_name, age
     </sql>
 
+    <select id="findAllUser" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM user
+    </select>
+
     <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long">
         SELECT <include refid="Base_Column_List"/>
         from  user
         where id = #{id}
     </select>
 
+    <select id="searchByName" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT <include refid="Base_Column_List"/>
+        from  user
+        where name like concat('%',#{name},'%')
+    </select>
+
+    <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+      INSERT INTO user(id,name,real_name,age)
+      VALUES
+        (#{id},#{name},#{realName},#{age})
+    </insert>
+
+    <update id="updateUser" parameterMap="User">
+        UPDATE
+            user
+        SET
+        <if test="name!=null">
+            name = #{name}
+        </if>
+        <if test="realName!=null">
+            ,real_name = #{realName}
+        </if>
+        where
+          id=#{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="java.lang.Long">
+        delete
+        from user
+        where id=#{id}
+    </delete>
 </mapper>
