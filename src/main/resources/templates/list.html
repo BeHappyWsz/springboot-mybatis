@@ -40,10 +40,13 @@
             <tr>
                 <td>用户名</td>
                 <td><input id="searchContent" name="name" type="text"/></td>
+                <td>
+      			  <input type="button" value="查询" onclick="search(this.name)"/>
+       			</td>
             </tr>
         </table>
-        <input type="button" value="查询" onclick="search(this.name)"/>
     </form>
+    <a href="javascript:history.back();">返回上一页</a> 
     <script type="text/javascript">
         function search(name){
             name = $("#searchContent").val();
