@@ -2,10 +2,17 @@
 <html lang="en">
 <head>
     <script src="/js/jquery-3.2.1.min.js"></script>
+    <!--<embed type="text/html" src="templates/extheader.html"/>-->
+    <!--<embed type="text/html" src="/common.html" />-->
     <meta charset="UTF-8"/>
     <title>${list?size}</title>
 </head>
 <body>
+    <!--<include file="../templates/extheader.html"/>-->
+    <!--<div>-->
+            <!--<iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src="extheader.html" width="100%"  height="auto">-->
+            <!--</iframe>-->
+    <!--</div>-->
     <form>
         <fieldset>用户列表</fieldset>
         <table>
@@ -46,7 +53,8 @@
             </tr>
         </table>
     </form>
-    <a href="javascript:history.back();">返回上一页</a> 
+    <!--<@redstar/>-->
+    <a href="javascript:history.back();">返回上一页</a>
     <script type="text/javascript">
         function search(name){
             name = $("#searchContent").val();
