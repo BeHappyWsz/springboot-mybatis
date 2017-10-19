@@ -41,7 +41,7 @@
             </tbody>
         </table>
     </form>
-    <a href="/insertUserForm">新增</a> &nbsp;
+    <a href="/insertUserForm">新增</a> &nbsp;&nbsp;<input type="button" value="${test!}" onclick="ajax()">
     <form method="post">
         <table>
             <tr>
@@ -62,6 +62,20 @@
                 name = "-1";
             }
             window.location.href="/user/searchByName/"+name;
+        }
+
+        function ajax(id){
+            var id = 1;
+            $.ajax({
+                url : "/getName",
+                type : "post",
+                data : "id="+id,
+                success : function (data) {
+                    for(var key in data){
+                        alert(data[key]);
+                    }
+                }
+            });
         }
     </script>
 </body>

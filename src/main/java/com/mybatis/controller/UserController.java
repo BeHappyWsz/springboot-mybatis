@@ -5,12 +5,12 @@ import com.mybatis.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author wsz
@@ -24,6 +24,7 @@ public class UserController {
     private UserService userService;
     private User user;
     private Long aLong;
+    private List<User> all;
 
     @RequestMapping(value = "/user/findOne/{id}", method = RequestMethod.GET)
     public String findOne(Model model, @PathVariable("id") Long id){
@@ -89,5 +90,26 @@ public class UserController {
             System.out.println("更新失败");
         }
         return "redirect:/user/findAll";
+    }
+
+    @RequestMapping("/model")
+    public ModelAndView model(){
+        ModelAndView mav = new ModelAndView();
+        all = userService.findAll();
+        mav.addObject("list",all);
+        mav.addObject("test","123");
+        mav.setViewName("/list");
+        return mav;
+    }
+
+    @ResponseBody
+    @RequestMapping("/getName")
+    public Map<String,Object> getName(Long id){
+        Map<String,Object> map = new HashMap<String ,Object>(16);
+        User u = userService.findById(id);
+        map.put("id",u.getId());
+        map.put("name",u.getName());
+        map.put("age",u.getAge());
+        return map;
     }
 }
