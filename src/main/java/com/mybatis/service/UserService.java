@@ -3,6 +3,7 @@ package com.mybatis.service;
 import com.mybatis.domain.User;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author  wsz
@@ -52,4 +53,6 @@ public interface UserService {
      * @return
      */
     Long deleteUser(Long id);
+
+    String grid(Map<String, Object> map);
 }

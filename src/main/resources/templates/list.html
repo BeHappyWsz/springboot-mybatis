@@ -2,59 +2,73 @@
 <html lang="en">
 <head>
     <script src="/js/jquery-3.2.1.min.js"></script>
-    <!--<embed type="text/html" src="templates/extheader.html"/>-->
-    <!--<embed type="text/html" src="/common.html" />-->
+    <script src="/js/jquery.easyui.min.js"></script>
+    <script src="/js/index.js"></script>
     <meta charset="UTF-8"/>
     <title>${list?size}</title>
 </head>
 <body>
-    <!--<include file="../templates/extheader.html"/>-->
-    <!--<div>-->
-            <!--<iframe MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no src="extheader.html" width="100%"  height="auto">-->
-            <!--</iframe>-->
-    <!--</div>-->
-    <form>
-        <fieldset>用户列表</fieldset>
-        <table>
-            <thead>
-                <tr>
-                    <td style="width: 70px;text-align: center">标记</td>
-                    <td style="width: 70px;text-align: center">用户名</td>
-                    <td style="width: 70px;text-align: center">真实姓名</td>
-                    <td style="width: 70px;text-align: center">年龄</td>
-                    <td style="width: 100px;text-align: center">操作</td>
-                </tr>
-            </thead>
-            <tbody>
-                <#list list as user>
-                    <tr>
-                        <td style="text-align: center">${user.id!}</td>
-                        <td style="text-align: left">${user.name!}</td>
-                        <td style="text-align: left">${user.realName!}</td>
-                        <td style="text-align: right">${user.age!}</td>
-                        <td style="text-align: center">
-                            <a href="/delete/${user.id!}">删除</a>
-                            <a href="/updateUserForm/${user.id!}">修改</a>
-                        </td>
-                    </tr>
-                </#list>
-            </tbody>
-        </table>
-    </form>
-    <a href="/insertUserForm">新增</a> &nbsp;&nbsp;<input type="button" value="${test!}" onclick="ajax()">
-    <form method="post">
-        <table>
-            <tr>
-                <td>用户名</td>
-                <td><input id="searchContent" name="name" type="text"/></td>
-                <td>
-      			  <input type="button" value="查询" onclick="search(this.name)"/>
-       			</td>
-            </tr>
-        </table>
-    </form>
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'north',border:false" title="" style="height: 60px;">
+            <div style="width: 90px;">
+                <form>
+                    <table>
+                        <tr>
+                            <td>姓名</td>
+                            <td><input class="easyui-textbox" name="name"/></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div data-options="region:'center',border:false" title="数据列表">
+            <table id="grid"></table>
+        </div>
+        <div data-options="region:'north',border:false" title="">
+        </div>
+    </div>
+    <!--<form>-->
+        <!--<fieldset>用户列表</fieldset>-->
+        <!--<table>-->
+            <!--<thead>-->
+                <!--<tr>-->
+                    <!--<td style="width: 70px;text-align: center">标记</td>-->
+                    <!--<td style="width: 70px;text-align: center">用户名</td>-->
+                    <!--<td style="width: 70px;text-align: center">真实姓名</td>-->
+                    <!--<td style="width: 70px;text-align: center">年龄</td>-->
+                    <!--<td style="width: 100px;text-align: center">操作</td>-->
+                <!--</tr>-->
+            <!--</thead>-->
+            <!--<tbody>-->
+                <!--<#list list as user>-->
+                    <!--<tr>-->
+                        <!--<td style="text-align: center">${user.id!}</td>-->
+                        <!--<td style="text-align: left">${user.name!}</td>-->
+                        <!--<td style="text-align: left">${user.realName!}</td>-->
+                        <!--<td style="text-align: right">${user.age!}</td>-->
+                        <!--<td style="text-align: center">-->
+                            <!--<a href="/delete/${user.id!}">删除</a>-->
+                            <!--<a href="/updateUserForm/${user.id!}">修改</a>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                <!--</#list>-->
+            <!--</tbody>-->
+        <!--</table>-->
+    <!--</form>-->
+    <!--<a href="/insertUserForm">新增</a> &nbsp;&nbsp;<input type="button" value="${test!}" onclick="ajax()">-->
+    <!--<form method="post">-->
+        <!--<table>-->
+            <!--<tr>-->
+                <!--<td>用户名</td>-->
+                <!--<td><input id="searchContent" name="name" type="text"/></td>-->
+                <!--<td>-->
+      			  <!--<input type="button" value="查询" onclick="search(this.name)"/>-->
+       			<!--</td>-->
+            <!--</tr>-->
+        <!--</table>-->
+    <!--</form>-->
 
-    <a href="javascript:history.back();">返回上一页</a>
+    <!--<a href="javascript:history.back();">返回上一页</a>-->
     <script type="text/javascript">
         function search(name){
             name = $("#searchContent").val();

@@ -51,6 +51,8 @@ public class UserController {
         return "list";
     }
 
+
+
     @RequestMapping(value = "/insertUserForm")
     public String insertUserForm(Model model){
         return "add";
@@ -111,5 +113,11 @@ public class UserController {
         map.put("name",u.getName());
         map.put("age",u.getAge());
         return map;
+    }
+
+    @ResponseBody
+    @RequestMapping("/grid")
+    public String grid(@RequestParam Map<String,Object> map){
+        return userService.grid(map);
     }
 }
