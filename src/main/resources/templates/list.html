@@ -3,6 +3,7 @@
 <head>
     <script src="/js/jquery-3.2.1.min.js"></script>
     <script src="/js/jquery.easyui.min.js"></script>
+    <script src="/js/timeCountDown.js"></script>
     <script src="/js/index.js"></script>
     <meta charset="UTF-8"/>
     <title>${list?size}</title>
@@ -28,7 +29,7 @@
         <!--</div>-->
     <!--</div>-->
     <form>
-        <fieldset>用户列表</fieldset>
+        <fieldset>用户列表<span id="hour"></span>时 <span id="mini"></span>分 <span id="sec"></span>秒</fieldset>
         <table>
             <thead>
                 <tr>
@@ -70,6 +71,15 @@
 
     <a href="javascript:history.back();">返回上一页</a>
     <script type="text/javascript">
+    var d = Date.UTC(2017, 10, 24, 23, 59);
+    var obj = {
+         sec: document.getElementById("sec"),
+         mini: document.getElementById("mini"),
+         hour: document.getElementById("hour")
+    }
+    fnTimeCountDown(d, obj);
+    
+    
         function search(name){
             name = $("#searchContent").val();
             if(name == null || name == undefined || name == ""){
