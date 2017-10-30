@@ -61,6 +61,7 @@ public class UserController {
     @RequestMapping(value = "/insert")
     public String saveUser(@ModelAttribute User user){
         Long i = userService.insertUser(user);
+        System.out.println(i);
         return "redirect:/user/findAll";
     }
 
@@ -119,5 +120,13 @@ public class UserController {
     @RequestMapping("/grid")
     public String grid(@RequestParam Map<String,Object> map){
         return userService.grid(map);
+    }
+
+    @ResponseBody
+    @RequestMapping("/")
+    public ModelAndView index(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("/bo");
+        return mav;
     }
 }
