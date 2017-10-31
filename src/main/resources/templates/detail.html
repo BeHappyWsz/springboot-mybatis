@@ -2,12 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/jquery.jqprint-0.3.js"></script>
+    <script src="/js/jquery-migrate-1.1.0.js"></script>
+    <script type="text/javascript">
+        function printTest(){
+            $("#test").jqprint();
+        }
+    </script>
     <title>${user.name}</title>
 </head>
 <body>
-    ${user.id} &nbsp;&nbsp;
-    ${user.name}&nbsp;&nbsp;
-    ${user.realName}&nbsp;&nbsp;
-    ${user.age}<br>
+    <div id="test">
+        <fieldset>
+            <legend>打印</legend>
+            <table >
+                <tr>
+                    <td>姓名：</td><td><input name="name" value="${user.name}"></td>
+                </tr>
+                <tr>
+                    <td>年龄：</td><td><input name="age" value="${user.age}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="button" onclick="printTest()" value="打印" style="width: 80px;"></td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
 </body>
 </html>
