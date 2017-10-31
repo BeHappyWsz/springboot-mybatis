@@ -129,4 +129,9 @@ public class UserController {
         mav.setViewName("/bo");
         return mav;
     }
+    @ResponseBody
+    @RequestMapping("/map")
+    public ModelAndView map(){
+        return new ModelAndView("/map");
+    }
 }
